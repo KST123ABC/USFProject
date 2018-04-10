@@ -1,0 +1,11 @@
+su
+umount
+ping
+mount
+chsh
+crontab
+sudo
+locate
+passwd
+top
+ps
