@@ -1,0 +1,6 @@
+root cd / && run-parts --report /etc/cron.hourly
+root test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.daily )
+root test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
+root test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
+root test -x /etc/init.d/anacron && /usr/sbin/invoke-rc.d anacron start >/dev/null
+root test -x /etc/cron.daily/popularity-contest && /etc/cron.daily/popularity-contest --crond
