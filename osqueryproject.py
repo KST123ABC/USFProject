@@ -67,6 +67,9 @@ if __name__ == "__main__":
 
     # dump listening ports
     print("-----RETRIEVING LISTENING PORTS-----")
+    print("This information is used to review what services might be running \n"
+        "on the host. Some ports are open by default as there are default \n"
+        "services run on each host.\n")
     print_dict(getPorts(instance))
 
     # determine OS info to run OS specific commands
