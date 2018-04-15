@@ -28,7 +28,7 @@ if __name__ == "__main__":
     # call to get current time on machine
     time = timestamp(instance)
     # print time
-    print("-----Current time: " + time + "-----\n")
+    print("\n*****Current time: " + time + "*****\n")
 
     # call to get logged in users
     users_list = logged_in_users(instance)
@@ -39,8 +39,9 @@ if __name__ == "__main__":
     print_dict(suspicious_users)
 
     # examine WiFi networks
-    print("-----RETRIEVING WIFI NETWORKS-----")
-    print_dict(getWiFi(instance))
+    print("-----RETRIEVING OPEN WIFI NETWORKS-----")
+    wifi_dict = getWiFi(instance)
+    print_dict(wifi_dict)
 
     # dump listening ports
     print("-----RETRIEVING LISTENING PORTS-----")

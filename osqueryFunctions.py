@@ -36,7 +36,7 @@ def analyze_users(users):
 # connected, auto login, disabled)
 def getWiFi(inst):
     networks = inst.client.query("select ssid, network_name, security_type,"
-        " last_connected, auto_login, disabled from wifi_networks").response
+        " last_connected, auto_login, disabled from wifi_networks where security_type like 'Open'").response
     return networks
 
 # Retrieve list of binaries that have SUID bit set and then checks them against
