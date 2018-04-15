@@ -1,8 +1,5 @@
 import time
-<<<<<<< Updated upstream
 
-=======
->>>>>>> Stashed changes
 # This file contains all of the functions that deal with the database and
 # manipulate data.
 
