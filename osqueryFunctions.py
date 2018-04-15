@@ -11,6 +11,14 @@ def timestamp(instance):
     return time_dict['timestamp']
 
 
+#
+#
+def getinfo(instance):
+    info = instance.client.query("select hardware_model, hardware_serial, hardware_vendor, "
+    "hostname, local_hostname, uuid from system_info").response
+    return info
+
+
 # Gets list of logged in users. Each logged in user is a dictionary.
 # return: list of dictionaries
 def logged_in_users(instance):
