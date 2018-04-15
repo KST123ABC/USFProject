@@ -33,6 +33,8 @@ if __name__ == "__main__":
     # print system info
     info = getinfo(instance)
     print("-----SYSTEM INFO-----")
+    print("This information can be helpful to use as a reference during forensic investigations, "
+    "especially when specific tools only run on certain systems.\n")
     print_dict(info)
 
     # call to get logged in users
@@ -52,7 +54,7 @@ if __name__ == "__main__":
     if len(actDeadUsers[1]) > 0:
         print_dict(actDeadUsers[1])
     else:
-        print("No dead users.\n")
+        print("No dead users.\n\n")
 
     # examine WiFi networks
     print("-----RETRIEVING OPEN WIFI NETWORKS-----")
