@@ -1,5 +1,8 @@
 import time
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 # This file contains all of the functions that deal with the database and
 # manipulate data.
 
@@ -16,21 +19,28 @@ def timestamp(instance):
 def logged_in_users(instance):
     # users_dict = list of dictionaries, each entry of command 'who' would be
     # its own dict
-    users_list_dict = instance.client.query("select * from logged_in_users"
+    users_list_dict = instance.client.query("select type, user, time, pid from logged_in_users"
         "").response
     return users_list_dict
 
 # Parse list of logged in users
 # return: list of dictionaries
 def analyze_users(users):
-    ''' # NOT WORKING
-    current_user = getpass.getuser()
-    # eliminate entries where the user is same as current user
-    for user in users:
-         if (user['user'] == 'lauraweintraub'):
-             users.remove(user)
-    '''
-    return users
+    # time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(timestamp))
+    # print active users
+    active_users = []
+    dead_users = []
+    for usr in users:
+        if usr['type'] == 'dead':
+            usr['time'] = time.strftime('%Y-%m-%d %H:%M:%S',
+                time.localtime(int(usr['time'])))
+            dead_users.append(usr)
+        else:
+            usr['time'] = time.strftime('%Y-%m-%d %H:%M:%S',
+                time.localtime(int(usr['time'])))
+            active_users.append(usr)
+    # print dead users
+    return [active_users, dead_users]
 
 # Retrieve WiFi networks that computer has connected to.
 # inst: the osquery instance that has been spawned
@@ -109,3 +119,13 @@ def getPorts(inst):
         if port['port'] != '0':
             badPorts.append(port)
     return badPorts
+
+# get the firewall status, 0 means it isn't enabled by default, 1 is enabled
+# by default
+# WARNING: CAN ONLY BE RUN ON MAC
+def getFirewall(inst):
+    stat = inst.client.query("select global_state from alf").response[0]['global_state']
+    if stat == '1':
+        return True
+    else:
+        return False

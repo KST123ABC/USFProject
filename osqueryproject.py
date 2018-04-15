@@ -1,4 +1,4 @@
-import osquery, getpass
+import osquery, getpass, time
 from osqueryFunctions import *
 
 
@@ -32,11 +32,14 @@ if __name__ == "__main__":
 
     # call to get logged in users
     users_list = logged_in_users(instance)
-    # call to parse users_list
-    suspicious_users = analyze_users(users_list)
-    # print suspicious users
-    print("-----SUSPICIOUS LOGGED-IN USERS-----")
-    print_dict(suspicious_users)
+    # call to parse users_list, [0] = active, [1] = dead users
+    actDeadUsers = analyze_users(users_list)
+    # print active users
+    print("-----ACTIVE LOGGED-IN USERS-----")
+    print_dict(actDeadUsers[0])
+    # print dead users
+    print("-----DEAD LOGGED-IN USERS-----")
+    print_dict(actDeadUsers[1])
 
     # examine WiFi networks
     print("-----RETRIEVING OPEN WIFI NETWORKS-----")
@@ -77,6 +80,15 @@ if __name__ == "__main__":
             print_dict(crontab)
         else:
             print("No malicious crontab entries found.")
+
+        # get firewall status
+        print("-----GETTING FIREWALL STATUS-----")
+        if not getFirewall(instance):
+            print("Your firewall is disabled. Go to 'System Preferences' then"
+                "'Security & Privacy'. Click the lock in the bottom corner, "
+                "then turn on your firewall.")
+        else:
+            print("Your firewall is enabled.")
 
     elif os_type == 'Windows':
         # run windows specific functions
