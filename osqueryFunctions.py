@@ -47,8 +47,9 @@ def getWiFi(inst):
     networks = inst.client.query("select ssid, network_name, last_connected from wifi_networks"
         " where security_type like 'Open' order by last_connected desc").response
     for wifi in networks:
-        timestamp = int(wifi['last_connected'])
-        wifi['last_connected'] = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(timestamp))
+        if wifi['last_connected'] not null:
+            timestamp = int(wifi['last_connected'])
+            wifi['last_connected'] = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(timestamp))
     return networks
 
 # Retrieve list of binaries that have SUID bit set and then checks them against

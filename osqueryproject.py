@@ -38,6 +38,7 @@ if __name__ == "__main__":
     print("-----ACTIVE LOGGED-IN USERS-----")
     print("If any of these users shouldn't be here, simply run `sudo kill pid`"
         " and this will end the user's session.")
+    
     print_dict(actDeadUsers[0])
     # print dead users
     print("-----DEAD LOGGED-IN USERS-----")
