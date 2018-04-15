@@ -36,6 +36,8 @@ if __name__ == "__main__":
     actDeadUsers = analyze_users(users_list)
     # print active users
     print("-----ACTIVE LOGGED-IN USERS-----")
+    print("If any of these users shouldn't be here, simply run `sudo kill pid`"
+        " and this will end the user's session.")
     print_dict(actDeadUsers[0])
     # print dead users
     print("-----DEAD LOGGED-IN USERS-----")
@@ -43,6 +45,10 @@ if __name__ == "__main__":
 
     # examine WiFi networks
     print("-----RETRIEVING OPEN WIFI NETWORKS-----")
+    print("Be careful with what networks you connect to. All of these are \n"
+        "unprotected networks where anyone can join them and see your \n"
+        "traffic. If you are not using any of these, please remove them from \n"
+        "the WiFi menu.")
     wifi_dict = getWiFi(instance)
     print_dict(wifi_dict)
 
