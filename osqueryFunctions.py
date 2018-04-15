@@ -1,3 +1,5 @@
+import time
+
 # This file contains all of the functions that deal with the database and
 # manipulate data.
 
@@ -35,8 +37,11 @@ def analyze_users(users):
 # Return: list of networks (includes SSID, network name, security, last
 # connected, auto login, disabled)
 def getWiFi(inst):
-    networks = inst.client.query("select ssid, network_name, security_type,"
-        " last_connected, auto_login, disabled from wifi_networks where security_type like 'Open'").response
+    networks = inst.client.query("select ssid, network_name, last_connected from wifi_networks"
+        " where security_type like 'Open' order by last_connected desc").response
+    for wifi in networks:
+        timestamp = int(wifi['last_connected'])
+        wifi['last_connected'] = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(timestamp))
     return networks
 
 # Retrieve list of binaries that have SUID bit set and then checks them against
