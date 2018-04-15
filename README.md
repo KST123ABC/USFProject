@@ -1,4 +1,4 @@
-# **NAME**
+# **Average Joe Forensics Tool**
 
 ## **Team Members**
 
@@ -21,16 +21,13 @@
 
 ## ** Requirements **
   * [OSQuery](https://osquery.io/downloads/official/2.11.2)
-  * [Python3](https://www.python.org/downloads/)
+  * [Python3.6](https://www.python.org/downloads/)
 
-## **What NAME Does....**
+## **What A.J.F.T. Does....**
 The average, non-forensically trained user might not know how to analyze computer system logs and find suspicious activity. The goal of our tool is to do the hard work for these users. This is done by collecting the data, analyzing it, and producing human-readable output suggesting suspicious activity when suspected. Meaning you no longer have to be a pro to detect suspicious activity on your computer!
 
 ## **Implementation Details**
-NAME will function as a standalone python script that utilizes OSQueries tables. OSQueryi is an interactive tool to use SQL queries in order to access the information in these tables. Our script pulls information from these tables and then outputs the information into a readable format.
-
-## **License**
-We will be using the MIT License for our Network Analysis Tool. We are not concerned with others using our code and we believe the more contributions made the more efficient the tool will be. To view the MIT License please see LICENSE file.
+A.J.F.T. will function as a standalone python script that utilizes OSQueries tables. OSQueryi is an interactive tool to use SQL queries in order to access the information in these tables. Our script pulls information from these tables and then outputs the information into a readable format.
 
 ## **Getting Started**
 1. Install OSQuery on local machine.
@@ -46,3 +43,6 @@ $ git install https://github.com/KST123ABC/USFProject.git
 ```
 $ python3 osqueryproject.py
 ```
+
+## **License**
+We will be using the MIT License for our Network Analysis Tool. We are not concerned with others using our code and we believe the more contributions made the more efficient the tool will be. To view the MIT License please see LICENSE file.
