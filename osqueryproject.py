@@ -43,11 +43,16 @@ if __name__ == "__main__":
     print("-----ACTIVE LOGGED-IN USERS-----")
     print("If any of these users shouldn't be here, simply run `sudo kill pid`"
         " and this will end the user's session.\n")
-    
-    print_dict(actDeadUsers[0])
+    if len(actDeadUsers[0]) > 0:
+        print_dict(actDeadUsers[0])
+    else:
+        print("No active users.\n")
     # print dead users
     print("-----DEAD LOGGED-IN USERS-----")
-    print_dict(actDeadUsers[1])
+    if len(actDeadUsers[1]) > 0:
+        print_dict(actDeadUsers[1])
+    else:
+        print("No dead users.\n")
 
     # examine WiFi networks
     print("-----RETRIEVING OPEN WIFI NETWORKS-----")
@@ -67,7 +72,7 @@ if __name__ == "__main__":
     if os_type == 'Mac':
         # run mac specific functions
         # maybe list installed homebrew packages
-        
+
         #print("-----OS is Mac-----\n")
 
         # dump binaries with SUID bit set
