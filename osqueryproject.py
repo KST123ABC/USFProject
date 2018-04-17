@@ -1,4 +1,6 @@
-import osquery, getpass, time
+import osquery
+# import getpass
+import time
 from osqueryFunctions import *
 
 
@@ -7,7 +9,7 @@ from osqueryFunctions import *
 def print_dict(obj):
     if type(obj) == dict:
         for k, v in obj.items():
-            print(k +": " + v)
+            print(k + ": " + v)
     elif type(obj) == list:
         for v in obj:
             if hasattr(v, '__iter__'):
@@ -17,6 +19,7 @@ def print_dict(obj):
     else:
         print(obj)
     print()
+
 
 if __name__ == "__main__":
     # Spawn an osquery process using an ephemeral extension socket.
@@ -78,7 +81,7 @@ if __name__ == "__main__":
         # run mac specific functions
         # maybe list installed homebrew packages
 
-        #print("-----OS is Mac-----\n")
+        # print("-----OS is Mac-----\n")
 
         # dump binaries with SUID bit set
         print("-----RETRIEVING BINARIES RUNNING WITH ADMIN PRIVILEGES-----")
@@ -119,7 +122,7 @@ if __name__ == "__main__":
 
     else:
         # run linux specific function
-        #print("-----OS is Linux based-----\n")
+        # print("-----OS is Linux based-----\n")
 
         # dump binaries with SUID bit set
         print("-----RETRIEVING BINARIES RUNNING WITH ADMIN PRIVILEGES-----")

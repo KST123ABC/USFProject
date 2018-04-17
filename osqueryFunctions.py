@@ -3,6 +3,7 @@ import time
 # This file contains all of the functions that deal with the database and
 # manipulate data.
 
+
 # Gets the current time of machine
 # return: string timestamp
 def timestamp(instance):
@@ -28,6 +29,7 @@ def logged_in_users(instance):
         "").response
     return users_list_dict
 
+
 # Parse list of logged in users
 # return: list of dictionaries
 def analyze_users(users):
@@ -47,6 +49,7 @@ def analyze_users(users):
     # print dead users
     return [active_users, dead_users]
 
+
 # Retrieve WiFi networks that computer has connected to.
 # inst: the osquery instance that has been spawned
 # Return: list of networks (includes SSID, network name, security, last
@@ -59,6 +62,7 @@ def getWiFi(inst):
             timestamp = int(wifi['last_connected'])
             wifi['last_connected'] = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(timestamp))
     return networks
+
 
 # Retrieve list of binaries that have SUID bit set and then checks them against
 # the file `suid_binaries.txt`. This file contains some/all of the binaries that
@@ -79,6 +83,7 @@ def getSUID(inst):
             badBinaries.append(binary)
     return badBinaries
 
+
 # Determine what OS the system is running.
 # Instance is the osquery instance that has been spawned.
 # Return: Mac, Linux, or Windows
@@ -94,6 +99,7 @@ def getOS(inst):
         return win
     else:
         return linux
+
 
 # Retrieve list of crontab entries and check if they exist in the
 # crontab_defaults file. If they exist in there, they have been deemed to not be
@@ -112,6 +118,7 @@ def getCron(inst):
             badCron.append(cron)
     return badCron
 
+
 # Retrieve list of ports that are listening on the host.
 # inst: the osquery instance that has been spawned
 # return: list of listening ports (pid, port, address)
@@ -125,6 +132,7 @@ def getPorts(inst):
         if port['port'] != '0':
             badPorts.append(port)
     return badPorts
+
 
 # get the firewall status, 0 means it isn't enabled by default, 1 is enabled
 # by default
